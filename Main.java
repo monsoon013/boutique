@@ -1,42 +1,48 @@
 //Tienda de ropa; productos disponibles, posibilidad agregar productos, ver el inventario y eliminar productos. 
 
 import java.util.Scanner;
-import java.io.File;
+
 
 public class Main {
     public static void main (String[] args) {
-        String fich_1 = "boutique.txt";
-        Scanner s = new Scanner(System.in);
-        boolean content = true;
+        Scanner sc = new Scanner(System.in);
+        Almacen miAlmacen = new Almacen("boutique.txt");
         int op = 0;
-        stock sto = new stock();
-        String remove_code;
-        while(op != 4){
-            System.out.println("   ***Boutique***   ");
-            System.out.println("1.Agregar productos " + 
-                               "\n2.Ver inventario" + 
-                               "\n3.Eliminar productos" + 
-                               "\n4.Salir");
-            System.out.println("\t¿Qué deseas hacer?");
-            op = s.nextInt(); s.nextLine();
+
+        while(op != 4) {
+            System.out.println("\n--- BOUTIQUE ---");
+            System.out.println("1. Agregar | 2. Ver | 3. Eliminar | 4. Salir");
+
+            op = s.nextInt();
+            s.nextLine(); //Limpieza de Buffer
+
             switch(op){
-                case 1:
-                    sto.add_stock();
-                    sto.save_stock(fich_1, p);
+                case 1: {
+                    System.out.print("Introduce el código: "); int c = s.nextInt(); s.nextLine();
+                    System.out.print("Introduce el tipo: "); String t = s.nextLine();
+                    System.out.print("Introduce el precio: "); double p = s.nextDouble();
+                    System.out.print("Introduce las unidades: "); int u = s.nextInt();
+
+                    Producto nuevo = new Producto(c,t,p,u); //Se crea el objeto
+
+                    miAlmacen.add_product(nuevo) //se añade
                     break;
-                case 2:
-                    sto.display_stock(fich_1);
+                }
+                case 2: {
+                    miAlmacen.display_product();
                     break;
-                case 3:
-                    System.out.println("Introduce el código del producto para eliminarlo:");
-                    remove_code = s.nextLine();
-                    sto.remove_stock(fich_1, remove_code);
+                }
+                case 2: {
+                    System.out.print("Código a borrar: ");
+                    String cod = s.nextLine();
+
+                    miAlmacen.remove_product(cod);
                     break;
+                }
                 case 4:
-                    System.out.println("Hasta luego");
+                    System.out.println("Saliendo...");
                     break;
             }
         }
-        s.close();
     }
 }
