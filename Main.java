@@ -13,28 +13,28 @@ public class Main {
             System.out.println("\n--- BOUTIQUE ---");
             System.out.println("1. Agregar | 2. Ver | 3. Eliminar | 4. Salir");
 
-            op = s.nextInt();
-            s.nextLine(); //Limpieza de Buffer
+            op = sc.nextInt();
+            sc.nextLine(); //Limpieza de Buffer
 
             switch(op){
                 case 1: {
-                    System.out.print("Introduce el código: "); int c = s.nextInt(); s.nextLine();
-                    System.out.print("Introduce el tipo: "); String t = s.nextLine();
-                    System.out.print("Introduce el precio: "); double p = s.nextDouble();
-                    System.out.print("Introduce las unidades: "); int u = s.nextInt();
+                    System.out.print("Introduce el código: "); int c = sc.nextInt(); sc.nextLine();
+                    System.out.print("Introduce el tipo: "); String t = sc.nextLine();
+                    System.out.print("Introduce el precio: "); double p = sc.nextDouble();
+                    System.out.print("Introduce las unidades: "); int u = sc.nextInt();
 
                     Producto nuevo = new Producto(c,t,p,u); //Se crea el objeto
 
-                    miAlmacen.add_product(nuevo) //se añade
+                    miAlmacen.add_product(nuevo); //se añade
                     break;
                 }
                 case 2: {
                     miAlmacen.display_product();
                     break;
                 }
-                case 2: {
+                case 3: {
                     System.out.print("Código a borrar: ");
-                    String cod = s.nextLine();
+                    String cod = sc.nextLine();
 
                     miAlmacen.remove_product(cod);
                     break;
@@ -43,6 +43,7 @@ public class Main {
                     System.out.println("Saliendo...");
                     break;
             }
+            
         }
     }
 }

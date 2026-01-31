@@ -18,7 +18,7 @@ public class Producto {
     
     //Método
 
-    @Override
+
     public String toFileString(){
         return code + ", " + type + ", " + price + ", " + unit;
     }

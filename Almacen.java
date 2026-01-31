@@ -18,7 +18,7 @@ public class Almacen {
     public void add_product(Producto x){ 
         //Try-with-resources; Intenta abrir el archivo. Pase lo que pase, ciérralo tú solo al acabar
         try (BufferedWriter bw = new BufferedWriter (new FileWriter(nombreFichero, true))){ //True para que no obrre lo anterior, sino que hace un append
-            bw.write(p.toFileString());
+            bw.write(x.toFileString());
             bw.newLine(); // para que haga /n por cada producto
             System.out.println("Producto guardado");
         } catch (IOException e){ //Si no existe
@@ -35,7 +35,7 @@ public class Almacen {
             //Realizar un bucle while para que muestre todas las líneas mientras existan
             //br.readLine() lee una línea y la guarda en la variable línea
             //Si devuelve null, se acabó el archivo
-            while((linea = br.readLine() != null)){
+            while((linea = br.readLine()) != null){
                 //Si la línea no son solo espacios en blanco
                 if(!linea.trim().isEmpty()){
                     System.out.println(linea);
@@ -45,7 +45,7 @@ public class Almacen {
 
             if(vacio) System.out.println("Inventario vacío");
         } catch (IOException e){
-            System.out.println("Erro al leer el archivo.")
+            System.out.println("Erro al leer el archivo.");
         }
     }
 
@@ -61,7 +61,7 @@ public class Almacen {
              BufferedWriter bw = new BufferedWriter(new FileWriter(aux))){
                 String linea;
                 while((linea = br.readLine()) != null){
-                    if(linea.trim().isEmpty() continue;) //Si es una línea vacía pasamos de ella
+                    if(linea.trim().isEmpty()) continue; //Si es una línea vacía pasamos de ella
 
                     //Split para transformar en array y obtener el primer elemento
                     //Siendo este el código del producto
@@ -76,7 +76,7 @@ public class Almacen {
                     }
                 }
              }catch (IOException e){
-                System.out.println("Error al borrar")
+                System.out.println("Error al borrar");
              }
 
              if(found){
@@ -85,7 +85,7 @@ public class Almacen {
                 System.out.println("Producto eliminado");
              }else {
                 aux.delete(); //Si no se encuentra, borra el auxiliar
-                System.out.println("No se encontró el código")
+                System.out.println("No se encontró el código");
              }
     }
 
